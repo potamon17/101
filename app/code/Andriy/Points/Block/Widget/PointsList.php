@@ -3,8 +3,10 @@
 namespace Andriy\Points\Block\Widget;
 
 use Andriy\Points\Model\ResourceModel\Points\CollectionFactory;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\View\Element\Template;
+use Magento\Shipping\Model\Config;
 use Magento\Widget\Block\BlockInterface;
 
 class PointsList extends Template implements BlockInterface, IdentityInterface
@@ -15,36 +17,56 @@ class PointsList extends Template implements BlockInterface, IdentityInterface
      */
     const CACHE_TAG = 'andriy_points_lost';
 
-    private $collectionFactory;
-    protected $scopeConfig;
-    protected $shipconfig;
+    /**
+     * @var CollectionFactory
+     */
+    private CollectionFactory $collectionFactory;
+
+    /**
+     * @var ScopeConfigInterface
+     */
+    protected ScopeConfigInterface $scopeConfig;
+
+    /**
+     * @var Config
+     */
+    protected Config $shipconfig;
 
     public function __construct(
         Template\Context $context,
         CollectionFactory $collectionFactory,
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Magento\Shipping\Model\Config $shipconfig,
+        ScopeConfigInterface $scopeConfig,
+        Config $shipconfig,
         array $data = []
-    )
-    {
+    ) {
         parent::__construct($context, $data);
         $this->collectionFactory = $collectionFactory;
         $this->shipconfig = $shipconfig;
         $this->scopeConfig = $scopeConfig;
     }
 
-    public function getIdentities()
+    /**
+     * @return string[]
+     */
+    public function getIdentities(): array
     {
         return [self::CACHE_TAG];
     }
 
-    public function getPointsCollection()
+    /**
+     * @return array
+     */
+    public function getPointsCollection(): array
     {
         $points = $this->collectionFactory->create();
         return $points->getItems();
     }
 
-    public function getShipping($codeBlock)
+    /**
+     * @param $codeBlock
+     * @return mixed
+     */
+    public function getShipping($codeBlock): mixed
     {
         $activeCarriers = $this->shipconfig->getActiveCarriers();
         foreach ($activeCarriers as $carrierCode => $carrierModel) {
@@ -54,7 +76,6 @@ class PointsList extends Template implements BlockInterface, IdentityInterface
                     if ($code == $codeBlock) {
                         return $carrierTitle = $this->scopeConfig
                             ->getValue('carriers/' . $carrierCode . '/title');
-
                     }
                 }
             }

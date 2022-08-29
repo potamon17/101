@@ -1,4 +1,5 @@
 <?php
+
 namespace Andriy\Points\Api;
 
 interface PointsRepositoryInterface

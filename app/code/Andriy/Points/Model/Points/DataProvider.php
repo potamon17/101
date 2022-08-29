@@ -9,10 +9,25 @@ use Magento\Ui\DataProvider\AbstractDataProvider;
 
 class DataProvider extends AbstractDataProvider
 {
+    /**
+     * @var
+     */
     private $loadedData;
-    private $dataPersistor;
+
+    /**
+     * @var DataPersistorInterface
+     */
+    private DataPersistorInterface $dataPersistor;
+
+    /**
+     * @var
+     */
     public $collectionFactory;
-    protected $storeManager;
+
+    /**
+     * @var StoreManagerInterface
+     */
+    protected StoreManagerInterface $storeManager;
 
     public function __construct(
         $name,
@@ -30,7 +45,7 @@ class DataProvider extends AbstractDataProvider
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
 
-    public function getData()
+    public function getData(): array
     {
         if (isset($this->loadedData)) {
             return $this->loadedData;

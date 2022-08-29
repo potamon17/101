@@ -15,12 +15,12 @@ class AddCmsBlock implements DataPatchInterface, PatchRevertableInterface
     /**
      * @var ModuleDataSetupInterface
      */
-    private $moduleDataSetup;
+    private ModuleDataSetupInterface $moduleDataSetup;
 
     /**
      * @var BlockFactory
      */
-    private $blockFactory;
+    private BlockFactory $blockFactory;
 
     /**
      * @param ModuleDataSetupInterface $moduleDataSetup
@@ -69,7 +69,7 @@ class AddCmsBlock implements DataPatchInterface, PatchRevertableInterface
     /**
      * @inheritDoc
      */
-    public static function getDependencies()
+    public static function getDependencies(): array
     {
         return [];
     }
@@ -77,7 +77,7 @@ class AddCmsBlock implements DataPatchInterface, PatchRevertableInterface
     /**
      * @inheritDoc
      */
-    public function getAliases()
+    public function getAliases(): array
     {
         return [];
     }

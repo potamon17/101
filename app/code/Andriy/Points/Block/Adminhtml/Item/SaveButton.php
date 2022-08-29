@@ -1,14 +1,14 @@
 <?php
 
-
 namespace Andriy\Points\Block\Adminhtml\Item;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
-use Magento\Ui\Component\Control\Container;
 
 class SaveButton implements ButtonProviderInterface
 {
-
+    /**
+     * @return array
+     */
     public function getButtonData(): array
     {
         return [

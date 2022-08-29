@@ -2,6 +2,9 @@
 
 namespace Andriy\Points\Block\Adminhtml\Item\Edit;
 
+use Magento\Backend\Block\Widget\Context;
+use Magento\Framework\Registry;
+
 class GenericButton
 {
     /**
@@ -9,14 +12,14 @@ class GenericButton
      *
      * @var \Magento\Framework\UrlInterface
      */
-    protected $urlBuilder;
+    protected \Magento\Framework\UrlInterface $urlBuilder;
 
     /**
      * Registry
      *
      * @var \Magento\Framework\Registry
      */
-    protected $registry;
+    protected \Magento\Framework\Registry $registry;
 
     /**
      * Constructor
@@ -25,8 +28,8 @@ class GenericButton
      * @param \Magento\Framework\Registry $registry
      */
     public function __construct(
-        \Magento\Backend\Block\Widget\Context $context,
-        \Magento\Framework\Registry $registry
+        Context $context,
+        Registry $registry
     ) {
         $this->urlBuilder = $context->getUrlBuilder();
         $this->registry = $registry;
@@ -37,7 +40,7 @@ class GenericButton
      *
      * @return int|null
      */
-    public function getId()
+    public function getId(): ?int
     {
         $contact = $this->registry->registry('entity_id');
         return $contact ? $contact->getId() : null;
@@ -50,7 +53,7 @@ class GenericButton
      * @param array $params
      * @return  string
      */
-    public function getUrl($route = '', $params = [])
+    public function getUrl($route = '', $params = []): string
     {
         return $this->urlBuilder->getUrl($route, $params);
     }

@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Andriy\Points\Model\ResourceModel\Points;
-
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {

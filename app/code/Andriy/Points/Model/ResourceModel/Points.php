@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Andriy\Points\Model\ResourceModel;
-
 
 class Points extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {

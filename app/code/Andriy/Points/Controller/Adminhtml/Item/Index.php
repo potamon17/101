@@ -3,15 +3,16 @@
 
 namespace Andriy\Points\Controller\Adminhtml\Item;
 
-
+use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\View\Result\PageFactory;
 
 class Index extends \Magento\Backend\App\Action
 {
     /**
      * @var \Magento\Framework\View\Result\PageFactory
      */
-    private $resultPageFactory;
+    private \Magento\Framework\View\Result\PageFactory $resultPageFactory;
 
     /**
      * Index constructor.
@@ -19,13 +20,13 @@ class Index extends \Magento\Backend\App\Action
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
      */
     public function __construct(
-        \Magento\Backend\App\Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory
+        Context $context,
+        PageFactory $resultPageFactory
     ) {
         parent::__construct($context);
         $this->resultPageFactory = $resultPageFactory;
     }
-    public function execute()
+    public function execute(): \Magento\Framework\View\Result\Page|\Magento\Framework\Controller\ResultInterface|ResponseInterface
     {
         $resultPage = $this->resultPageFactory->create();
         $resultPage->setActiveMenu('Andriy_Points::add_points');

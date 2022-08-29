@@ -15,12 +15,12 @@ class AddCmsPage implements DataPatchInterface, PatchRevertableInterface
     /**
      * @var ModuleDataSetupInterface
      */
-    private $moduleDataSetup;
+    private ModuleDataSetupInterface $moduleDataSetup;
 
     /**
      * @var PageFactory
      */
-    private $pageFactory;
+    private PageFactory $pageFactory;
 
     /**
      * @param ModuleDataSetupInterface $moduleDataSetup
@@ -70,7 +70,7 @@ class AddCmsPage implements DataPatchInterface, PatchRevertableInterface
     /**
      * @inheritDoc
      */
-    public static function getDependencies()
+    public static function getDependencies(): array
     {
         return [];
     }
@@ -78,7 +78,7 @@ class AddCmsPage implements DataPatchInterface, PatchRevertableInterface
     /**
      * @inheritDoc
      */
-    public function getAliases()
+    public function getAliases(): array
     {
         return [];
     }

@@ -14,12 +14,12 @@ class MassDelete extends Action
      * Massactions filter.
      * @var Filter
      */
-    protected $_filter;
+    protected Filter $_filter;
 
     /**
      * @var CollectionFactory
      */
-    protected $_collectionFactory;
+    protected CollectionFactory $_collectionFactory;
 
     /**
      * @param Context $context
@@ -36,7 +36,7 @@ class MassDelete extends Action
         parent::__construct($context);
     }
 
-    public function execute()
+    public function execute(): \Magento\Framework\Controller\ResultInterface|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect
     {
         $collection = $this->_filter->getCollection($this->_collectionFactory->create());
         $recordDeleted = 0;

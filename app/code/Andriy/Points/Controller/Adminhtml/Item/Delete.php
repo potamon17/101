@@ -14,7 +14,7 @@ class Delete extends Points
      *
      * @var PointsRepositoryInterface
      */
-    protected $pointsRepositoryInterface;
+    protected PointsRepositoryInterface $pointsRepositoryInterface;
 
     /**
      * Delete construct

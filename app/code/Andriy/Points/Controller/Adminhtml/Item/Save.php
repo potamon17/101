@@ -11,12 +11,12 @@ use Magento\Framework\App\Request\DataPersistorInterface;
 
 class Save extends Points
 {
-    protected $pointsFactory;
+    protected PointsFactory $pointsFactory;
     /**
      * @return void
      */
-    protected $dataPersistor;
-    protected $pointsRepositoryInterface;
+    protected DataPersistorInterface $dataPersistor;
+    protected PointsRepositoryInterface $pointsRepositoryInterface;
 
     /**
      * Save constructor.
@@ -38,7 +38,7 @@ class Save extends Points
         parent::__construct($context);
     }
 
-    public function execute()
+    public function execute(): Redirect|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\App\ResponseInterface
     {
         /** @var Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();

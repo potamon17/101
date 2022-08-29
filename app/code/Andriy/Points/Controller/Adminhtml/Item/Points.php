@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Andriy\Points\Controller\Adminhtml\Item;
-
 
 use Magento\Backend\App\Action;
 

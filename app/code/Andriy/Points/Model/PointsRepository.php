@@ -2,17 +2,23 @@
 
 namespace Andriy\Points\Model;
 
-use Andriy\Points\Api\PointsRepositoryInterface;
-use Magento\Framework\Exception\CouldNotSaveException;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Exception\NoSuchEntityException;
-use Andriy\Points\Model\ResourceModel\Points;
 use Andriy\Points\Api\Data;
+use Andriy\Points\Api\PointsRepositoryInterface;
+use Andriy\Points\Model\ResourceModel\Points;
+use Magento\Framework\Exception\CouldNotSaveException;
+use Magento\Framework\Exception\NoSuchEntityException;
 
 class PointsRepository implements PointsRepositoryInterface
 {
-    protected $resource;
-    protected $pointsFactory;
+    /**
+     * @var Points
+     */
+    protected Points $resource;
+
+    /**
+     * @var PointsFactory
+     */
+    protected PointsFactory $pointsFactory;
 
     public function __construct(
         Points $resource,

@@ -12,12 +12,12 @@ class Edit extends Points
     /**
      * @var
      */
-    protected $resultPageFactory;
+    protected PageFactory $resultPageFactory;
 
     /**
      * @var PointsRepository
      */
-    protected $pointsRepository;
+    protected PointsRepository $pointsRepository;
 
     /**
      * Edit constructor.
@@ -38,7 +38,7 @@ class Edit extends Points
     /**
      * @return \Magento\Backend\Model\View\Result\Page|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
      */
-    public function execute()
+    public function execute(): \Magento\Framework\Controller\ResultInterface|\Magento\Framework\App\ResponseInterface|\Magento\Backend\Model\View\Result\Page
     {
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
         $rowId = (int) $this->getRequest()->getParam('id');

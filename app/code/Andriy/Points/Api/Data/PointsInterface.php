@@ -1,7 +1,11 @@
 <?php
+
 namespace Andriy\Points\Api\Data;
 
-interface PointsInterface extends \Magento\Framework\Api\CustomAttributesDataInterface
+use Magento\Tests\NamingConvention\true\string;
+use Magento\Framework\Api\CustomAttributesDataInterface;
+
+interface PointsInterface extends CustomAttributesDataInterface
 {
     /**
      * Constants for keys of data array. Identical to the name of the getter in snake case.
@@ -18,9 +22,8 @@ interface PointsInterface extends \Magento\Framework\Api\CustomAttributesDataInt
      *
      * @return int|null
      * @since 100.1.0
-     * @noinspection PhpMissingReturnTypeInspection
      */
-    public function getEntityId();
+    public function getEntityId(): int;
 
     /**
      * @param int $entityId
@@ -35,9 +38,8 @@ interface PointsInterface extends \Magento\Framework\Api\CustomAttributesDataInt
      *
      * @return string
      * @since 100.1.0
-     * @noinspection PhpMissingReturnTypeInspection
      */
-    public function getName();
+    public function getName():string;
 
     /**
      * @param string $name
@@ -52,9 +54,8 @@ interface PointsInterface extends \Magento\Framework\Api\CustomAttributesDataInt
      *
      * @return string
      * @since 100.1.0
-     * @noinspection PhpMissingReturnTypeInspection
      */
-    public function getAddress();
+    public function getAddress():string;
 
     /**
      * @param string $address
@@ -69,9 +70,8 @@ interface PointsInterface extends \Magento\Framework\Api\CustomAttributesDataInt
      *
      * @return string
      * @since 100.1.0
-     * @noinspection PhpMissingReturnTypeInspection
      */
-    public function getLatitude();
+    public function getLatitude():string;
 
     /**
      * @param string $latitude
@@ -86,9 +86,8 @@ interface PointsInterface extends \Magento\Framework\Api\CustomAttributesDataInt
      *
      * @return string
      * @since 100.1.0
-     * @noinspection PhpMissingReturnTypeInspection
      */
-    public function getLongitude();
+    public function getLongitude():string;
 
     /**
      * @param string $longitude
@@ -103,9 +102,8 @@ interface PointsInterface extends \Magento\Framework\Api\CustomAttributesDataInt
      *
      * @return string
      * @since 100.1.0
-     * @noinspection PhpMissingReturnTypeInspection
      */
-    public function getLocation();
+    public function getLocation():string;
 
     /**
      * @param string $location
@@ -118,17 +116,16 @@ interface PointsInterface extends \Magento\Framework\Api\CustomAttributesDataInt
     /**
      * Returns point Address
      *
-     * @return int
+     * @return string
      * @since 100.1.0
-     * @noinspection PhpMissingReturnTypeInspection
      */
-    public function getShippingId();
+    public function getShippingId():string;
 
     /**
-     * @param int $shippingId
+     * @param string $shippingId
      * @return $this
      * @since 100.1.0
      * @noinspection PhpMissingReturnTypeInspection
      */
-    public function setShippingId(int $shippingId);
+    public function setShippingId(string $shippingId);
 }
