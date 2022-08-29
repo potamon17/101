@@ -57,7 +57,7 @@ class PointsRepository implements PointsRepositoryInterface
         } catch (\Exception $exception) {
             /** @noinspection PhpUndefinedClassInspection */
             throw new CouldNotDeleteException(__(
-                'Could not delete the Faq: %1',
+                'Could not delete the Point: %1',
                 $exception->getMessage()
             ));
         }

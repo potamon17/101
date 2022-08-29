@@ -132,12 +132,12 @@ class Points extends \Magento\Framework\Model\AbstractModel implements \Magento\
         return $this->setData(self::LOCATION, $location);
     }
 
-    public function getShippingId(): int
+    public function getShippingId(): string
     {
         return $this->getData(self::SHIPPING_ID);
     }
 
-    public function setShippingId(int $shippingId): Points
+    public function setShippingId(string $shippingId): Points
     {
         return $this->setData(self::SHIPPING_ID, $shippingId);
     }

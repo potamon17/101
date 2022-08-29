@@ -35,10 +35,8 @@ class Edit extends Points
         parent::__construct($context);
     }
 
-    /**
-     * @return \Magento\Backend\Model\View\Result\Page|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
-     */
-    public function execute(): \Magento\Framework\Controller\ResultInterface|\Magento\Framework\App\ResponseInterface|\Magento\Backend\Model\View\Result\Page
+
+    public function execute()
     {
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
         $rowId = (int) $this->getRequest()->getParam('id');

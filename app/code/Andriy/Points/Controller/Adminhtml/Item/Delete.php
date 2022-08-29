@@ -30,7 +30,7 @@ class Delete extends Points
         parent::__construct($context);
     }
 
-    public function execute(): object
+    public function execute()
     {
         $resultRedirect = $this->resultRedirectFactory->create();
         $id = $this->getRequest()->getParam('entity_id');

@@ -2,7 +2,6 @@
 
 namespace Andriy\Points\Api\Data;
 
-use Magento\Tests\NamingConvention\true\string;
 use Magento\Framework\Api\CustomAttributesDataInterface;
 
 interface PointsInterface extends CustomAttributesDataInterface

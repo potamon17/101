@@ -38,7 +38,7 @@ class Save extends Points
         parent::__construct($context);
     }
 
-    public function execute(): Redirect|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\App\ResponseInterface
+    public function execute()
     {
         /** @var Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();

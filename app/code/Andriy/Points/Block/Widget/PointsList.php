@@ -6,12 +6,13 @@ use Andriy\Points\Model\ResourceModel\Points\CollectionFactory;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\View\Element\Template;
+use Magento\Shipping\Model\CarrierFactory;
 use Magento\Shipping\Model\Config;
 use Magento\Widget\Block\BlockInterface;
 
 class PointsList extends Template implements BlockInterface, IdentityInterface
 {
-
+    const API = 'point/general/google_api_key';
     /**
      * Cache tag
      */
@@ -23,26 +24,29 @@ class PointsList extends Template implements BlockInterface, IdentityInterface
     private CollectionFactory $collectionFactory;
 
     /**
-     * @var ScopeConfigInterface
+     * @var CarrierFactory
      */
-    protected ScopeConfigInterface $scopeConfig;
+    protected CarrierFactory $carrierFactory;
 
     /**
-     * @var Config
+     * PointsList constructor.
+     * @param Template\Context $context
+     * @param CollectionFactory $collectionFactory
+     * @param ScopeConfigInterface $scopeConfig
+     * @param Config $shipconfig
+     * @param array $data
      */
-    protected Config $shipconfig;
-
     public function __construct(
         Template\Context $context,
         CollectionFactory $collectionFactory,
+        CarrierFactory $carrierFactory,
         ScopeConfigInterface $scopeConfig,
-        Config $shipconfig,
         array $data = []
     ) {
         parent::__construct($context, $data);
         $this->collectionFactory = $collectionFactory;
-        $this->shipconfig = $shipconfig;
-        $this->scopeConfig = $scopeConfig;
+        $this->carrierFactory = $carrierFactory;
+        $this->_scopeConfig = $scopeConfig;
     }
 
     /**
@@ -68,17 +72,13 @@ class PointsList extends Template implements BlockInterface, IdentityInterface
      */
     public function getShipping($codeBlock): mixed
     {
-        $activeCarriers = $this->shipconfig->getActiveCarriers();
-        foreach ($activeCarriers as $carrierCode => $carrierModel) {
-            if ($carrierMethods = $carrierModel->getAllowedMethods()) {
-                foreach ($carrierMethods as $methodCode => $method) {
-                    $code = $carrierCode . '_' . $methodCode;
-                    if ($code == $codeBlock) {
-                        return $carrierTitle = $this->scopeConfig
-                            ->getValue('carriers/' . $carrierCode . '/title');
-                    }
-                }
-            }
-        }
+        $code = explode("_", $codeBlock);
+        return $this->carrierFactory->create($code[1])->getConfigData('title');
+    }
+
+    public function getApi()
+    {
+        $storeScope = \Magento\Store\Model\ScopeInterface::SCOPE_STORE;
+        return $this->_scopeConfig->getValue(self::API, $storeScope);
     }
 }

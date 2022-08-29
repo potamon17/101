@@ -36,7 +36,7 @@ class MassDelete extends Action
         parent::__construct($context);
     }
 
-    public function execute(): \Magento\Framework\Controller\ResultInterface|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect
+    public function execute()
     {
         $collection = $this->_filter->getCollection($this->_collectionFactory->create());
         $recordDeleted = 0;

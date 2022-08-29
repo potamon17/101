@@ -2,7 +2,9 @@
 
 namespace Andriy\Points\Model\ResourceModel\Points;
 
-class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+
+class Collection extends AbstractCollection
 {
     /**
      * @var string
